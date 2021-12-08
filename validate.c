@@ -6,7 +6,7 @@
 /*   By: lemarque <lemarque@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 17:32:34 by lemarque          #+#    #+#             */
-/*   Updated: 2021/12/08 17:18:22 by lemarque         ###   ########.fr       */
+/*   Updated: 2021/12/08 17:28:10 by lemarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static void	is_real_valid(char **args, t_window *win)
 
 	dot = 0;
 	i = 0;
+	sign = 0;
 	while ((args[0][i] != '\0' && (ft_isascii(args[0][i]) == 1)) || \
 			args[0][i] == '.')
 	{
