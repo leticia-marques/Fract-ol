@@ -6,7 +6,7 @@
 /*   By: lemarque <lemarque@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 17:32:34 by lemarque          #+#    #+#             */
-/*   Updated: 2021/12/06 22:43:17 by lemarque         ###   ########.fr       */
+/*   Updated: 2021/12/08 17:18:22 by lemarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,14 @@
 
 static void	is_im_valid(char **args, t_window *win)
 {
-	int	i;
-	int	dot;
-	int	i_sign;
 	int	size;
+	int	i_sign;
 
-	dot = 0;
-	i = 0;
-	i_sign = 0;
 	size = ft_strlen(args[1]);
-	while ((args[1][i] >= '0' && args[1][i] <= '0') || args[1][i] == '.')
-	{
-		if (args[1][i] == '.')
-			dot++;
-		if (args[1][i] == 'i')
-			i_sign++;
-		if (args[1][i++] == 'i' || i_sign > 1 || dot > 1)
-			return (errors(2, win));
-		i++;
-	}
+	i_sign = args[1][size - 1] == 'i';
+	if (!i_sign)
+		return (errors(2, win));
+	check_values(win, args);
 	args[1][size - 1] = '\0';
 	win->c.real = ft_atod(args[0]);
 	win->c.im = ft_atod(args[1]);
@@ -42,23 +31,22 @@ static void	is_real_valid(char **args, t_window *win)
 {
 	int	i;
 	int	dot;
-	int	i_sign;
-	int	size;
+	int	sign;
 
 	dot = 0;
 	i = 0;
-	size = ft_strlen(args[1]);
-	i_sign = args[1][size - 1] == 'i';
-	if (! i_sign)
-		return (errors(2, win));
-	while ((args[0][i] >= '0' && args[0][i] <= '9') || args[0][i] == '.' \
-		|| args[0][i] == 'i')
+	while ((args[0][i] != '\0' && (ft_isascii(args[0][i]) == 1)) || \
+			args[0][i] == '.')
 	{
+		if (args[0][i] == '+' || args[0][i] == '-')
+			sign++;
 		if (args[0][i] == '.')
 			dot++;
+		if (ft_isalpha(args[0][i]) == 1 && args[0][i] != 'i')
+			return (errors(2, win));
 		if (args[0][i] == 'i')
 			return (errors(2, win));
-		if ((args[0][i] == '.' && args[0][i] == '\0' ) || dot > 1)
+		if ((args[0][i] == '.' && args[0][i++] == '\0') || dot > 1 || sign > 1)
 			return (errors(2, win));
 		i++;
 	}
@@ -117,7 +105,7 @@ void	check_arguments(t_window *win, int argc, char **argv)
 	else if (ft_strcmp(argv[1], "mandelbrot") == 0)
 		win->frac.name = "Mandelbrot";
 	else if (ft_strcmp(argv[1], "burningship") == 0 || \
-										ft_strcmp(argv[1], "burning ship") == 0)
+										ft_strcmp(argv[1], "burning-ship") == 0)
 		win->frac.name = "Burning Ship";
 	else
 		errors(2, win);

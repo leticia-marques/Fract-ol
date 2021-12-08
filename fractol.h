@@ -6,7 +6,7 @@
 /*   By: lemarque <lemarque@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 16:59:08 by lemarque          #+#    #+#             */
-/*   Updated: 2021/12/06 23:53:33 by lemarque         ###   ########.fr       */
+/*   Updated: 2021/12/08 09:40:50 by lemarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,5 @@ int		key_map(int keycode, t_window *win);
 int		clear_memory(t_window *win);
 int		call_fractol(t_window *win);
 int		expose_hook(t_window *win);
+void	check_values(t_window *win, char **args);
 #endif

@@ -1,5 +1,5 @@
 SOURCES = main.c mandelbrot.c colors.c zoom.c validate.c init_values.c julia.c
-SOURCES+= errors.c key_map.c burning_ship.c
+SOURCES+= errors.c key_map.c burning_ship.c validate_utils.c
 
 LIBFT = ./Libft/libft.a
 MLX_LIB = ./mlx/libmlx.a
