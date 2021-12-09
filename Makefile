@@ -26,6 +26,8 @@ $(NAME):	$(OBJECTS)
 			make all -C ./mlx
 			$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MLX_LIB) $(MLX) -o $(NAME)
 
+bonus:		$(NAME)
+
 clean:
 			$(RM) $(OBJECTS)
 			make clean -C ./Libft

@@ -6,7 +6,7 @@
 /*   By: lemarque <lemarque@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 10:45:07 by lemarque          #+#    #+#             */
-/*   Updated: 2021/12/07 16:28:12 by lemarque         ###   ########.fr       */
+/*   Updated: 2021/12/08 19:49:40 by lemarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ int	key_map(int keycode, t_window *win)
 	if (keycode == 65362)
 		win->zoom.offset_y -= win->zoom.offset_y * 0.01;
 	if (keycode == 65364)
-		win->zoom.offset_y += win->zoom.offset_y * 0.1;
+		win->zoom.offset_y += win->zoom.offset_y * 0.01;
 	if (keycode == 65361)
 		win->zoom.offset_x -= win->zoom.offset_x * 0.1;
 	if (keycode == 65363)
-		win->zoom.offset_x += win->zoom.offset_x * 0.1;
+		win->zoom.offset_x += win->zoom.offset_x * 0.01;
 	mlx_destroy_image(win->pointer, win->img.pointer);
 	init_image(win);
 	call_fractol(win);
